@@ -64,6 +64,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)stringByAppendingPathScale:(CGFloat)scale;
 
+- (NSString *)truncateByCharLength:(NSUInteger)charLength;
+
 @end
 
 NS_ASSUME_NONNULL_END

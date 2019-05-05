@@ -36,4 +36,18 @@
     return [self stringByReplacingCharactersInRange:extRange withString:scaleStr];
 }
 
+- (NSString *)truncateByCharLength:(NSUInteger)charLength {
+    __block NSUInteger length = 0;
+    [self enumerateSubstringsInRange:NSMakeRange(0, [self length])
+                             options:NSStringEnumerationByComposedCharacterSequences
+                          usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                              if ( length+substringRange.length > charLength ) {
+                                  *stop = YES;
+                                  return;
+                              }
+                              length+=substringRange.length;
+                          }];
+    return [self substringToIndex:length];
+}
+
 @end

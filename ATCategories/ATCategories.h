@@ -35,5 +35,6 @@
 #import "UIColor+ATExd.h"
 #import "UIBarButtonItem+ATExd.h"
 #import "UIApplication+ATExd.h"
+#import "UIButton+ATExd.h"
 
 #endif /* ATCategories_h */
