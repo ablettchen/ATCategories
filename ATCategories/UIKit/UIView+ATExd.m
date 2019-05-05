@@ -9,6 +9,12 @@
 
 #import "UIView+ATExd.h"
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
+
+static void *kUIViewATExdPropertyBottomGap = &kUIViewATExdPropertyBottomGap;
+static void *kUIViewATExdPropertyTopGap = &kUIViewATExdPropertyTopGap;
+static void *kUIViewATExdPropertyLeftGap = &kUIViewATExdPropertyLeftGap;
+static void *kUIViewATExdPropertyRightGap = &kUIViewATExdPropertyRightGap;
 
 @implementation UIView (ATExd)
 
@@ -138,100 +144,161 @@
     return rect;
 }
 
-- (CGFloat)left {
+- (CGFloat)at_left {
     return self.frame.origin.x;
 }
 
-- (void)setLeft:(CGFloat)x {
+- (void)setAt_left:(CGFloat)x {
     CGRect frame = self.frame;
     frame.origin.x = x;
     self.frame = frame;
 }
 
-- (CGFloat)top {
+- (CGFloat)at_top {
     return self.frame.origin.y;
 }
 
-- (void)setTop:(CGFloat)y {
+- (void)setAt_top:(CGFloat)y {
     CGRect frame = self.frame;
     frame.origin.y = y;
     self.frame = frame;
 }
 
-- (CGFloat)right {
+- (CGFloat)at_right {
     return self.frame.origin.x + self.frame.size.width;
 }
 
-- (void)setRight:(CGFloat)right {
+- (void)setAt_right:(CGFloat)right {
     CGRect frame = self.frame;
     frame.origin.x = right - frame.size.width;
     self.frame = frame;
 }
 
-- (CGFloat)bottom {
+- (CGFloat)at_bottom {
     return self.frame.origin.y + self.frame.size.height;
 }
 
-- (void)setBottom:(CGFloat)bottom {
+- (void)setAt_bottom:(CGFloat)bottom {
     CGRect frame = self.frame;
     frame.origin.y = bottom - frame.size.height;
     self.frame = frame;
 }
 
-- (CGFloat)width {
+- (CGFloat)at_width {
     return self.frame.size.width;
 }
 
-- (void)setWidth:(CGFloat)width {
+- (void)setAt_width:(CGFloat)width {
     CGRect frame = self.frame;
     frame.size.width = width;
     self.frame = frame;
 }
 
-- (CGFloat)height {
+- (CGFloat)at_height {
     return self.frame.size.height;
 }
 
-- (void)setHeight:(CGFloat)height {
+- (void)setAt_height:(CGFloat)height {
     CGRect frame = self.frame;
     frame.size.height = height;
     self.frame = frame;
 }
 
-- (CGFloat)centerX {
+- (CGFloat)at_centerX {
     return self.center.x;
 }
 
-- (void)setCenterX:(CGFloat)centerX {
+- (void)setAt_centerX:(CGFloat)centerX {
     self.center = CGPointMake(centerX, self.center.y);
 }
 
-- (CGFloat)centerY {
+- (CGFloat)at_centerY {
     return self.center.y;
 }
 
-- (void)setCenterY:(CGFloat)centerY {
+- (void)setAt_centerY:(CGFloat)centerY {
     self.center = CGPointMake(self.center.x, centerY);
 }
 
-- (CGPoint)origin {
+- (CGPoint)at_origin {
     return self.frame.origin;
 }
 
-- (void)setOrigin:(CGPoint)origin {
+- (void)setAt_origin:(CGPoint)origin {
     CGRect frame = self.frame;
     frame.origin = origin;
     self.frame = frame;
 }
 
-- (CGSize)size {
+- (CGSize)at_size {
     return self.frame.size;
 }
 
-- (void)setSize:(CGSize)size {
+- (void)setAt_size:(CGSize)size {
     CGRect frame = self.frame;
     frame.size = size;
     self.frame = frame;
+}
+
+// iPhoneX adapt
+- (CGFloat)safeAreaBottomGap
+{
+    NSNumber *gap = objc_getAssociatedObject(self, kUIViewATExdPropertyBottomGap);
+    if (gap == nil) {
+        if (@available(iOS 11, *)) {
+            if (self.superview.safeAreaLayoutGuide.layoutFrame.size.height > 0) {
+                gap = @((self.superview.at_height - self.superview.safeAreaLayoutGuide.layoutFrame.origin.y - self.superview.safeAreaLayoutGuide.layoutFrame.size.height));
+            } else {
+                gap = nil;
+            }
+        } else {
+            gap = @(0);
+        }
+        objc_setAssociatedObject(self, kUIViewATExdPropertyBottomGap, gap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gap.floatValue;
+}
+
+- (CGFloat)safeAreaTopGap
+{
+    NSNumber *gap = objc_getAssociatedObject(self, kUIViewATExdPropertyTopGap);
+    if (gap == nil) {
+        if (@available(iOS 11, *)) {
+            gap = @(self.superview.safeAreaLayoutGuide.layoutFrame.origin.y);
+        } else {
+            gap = @(0);
+        }
+        objc_setAssociatedObject(self, kUIViewATExdPropertyTopGap, gap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gap.floatValue;
+}
+
+- (CGFloat)safeAreaLeftGap
+{
+    NSNumber *gap = objc_getAssociatedObject(self, kUIViewATExdPropertyLeftGap);
+    if (gap == nil) {
+        if (@available(iOS 11, *)) {
+            gap = @(self.superview.safeAreaLayoutGuide.layoutFrame.origin.x);
+        } else {
+            gap = @(0);
+        }
+        objc_setAssociatedObject(self, kUIViewATExdPropertyLeftGap, gap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gap.floatValue;
+}
+
+- (CGFloat)safeAreaRightGap
+{
+    NSNumber *gap = objc_getAssociatedObject(self, kUIViewATExdPropertyRightGap);
+    if (gap == nil) {
+        if (@available(iOS 11, *)) {
+            gap = @(self.superview.safeAreaLayoutGuide.layoutFrame.origin.x);
+        } else {
+            gap = @(0);
+        }
+        objc_setAssociatedObject(self, kUIViewATExdPropertyRightGap, gap, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return gap.floatValue;
 }
 
 @end
