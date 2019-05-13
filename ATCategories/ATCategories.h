@@ -36,5 +36,6 @@
 #import "UIBarButtonItem+ATExt.h"
 #import "UIApplication+ATExt.h"
 #import "UIButton+ATExt.h"
+#import "ATRotationView.h"
 
 #endif /* ATCategories_h */
