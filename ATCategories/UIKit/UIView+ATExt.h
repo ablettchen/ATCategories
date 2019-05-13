@@ -42,6 +42,29 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGFloat)safeAreaLeftGap;
 - (CGFloat)safeAreaRightGap;
 
+
+#pragma mark - 设置辉光效果
+
+@property (nonatomic, strong) UIColor *glowColor; ///< 辉光的颜色
+@property (nonatomic, strong) NSNumber *glowOpacity; ///< 辉光的透明度
+@property (nonatomic, strong) NSNumber *glowRadius; ///<  辉光的阴影半径
+
+#pragma mark - 设置辉光时间间隔
+
+@property (nonatomic, strong) NSNumber *glowAnimationDuration; ///< 一次完整的辉光周期（从显示到透明或者从透明到显示），默认1s
+@property (nonatomic, strong) NSNumber *glowDuration; ///< 保持辉光时间（不设置，默认为0.5s）
+@property (nonatomic, strong) NSNumber *hideDuration; ///< 不显示辉光的周期（不设置默认为0.5s）
+
+#pragma mark - 辉光相关操作
+
+- (void)createGlowLayer; ///< 创建出辉光layer
+- (void)insertGlowLayer; ///< 插入辉光的layer
+- (void)removeGlowLayer; ///< 移除辉光的layer
+- (void)glowToshowAnimated:(BOOL)animated; ///< 显示辉光
+- (void)glowToHideAnimated:(BOOL)animated; ///< 隐藏辉光
+- (void)startGlowLoop; ///< 开始循环辉光
+
+
 @end
 
 NS_ASSUME_NONNULL_END
