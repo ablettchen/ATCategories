@@ -92,4 +92,12 @@ static BOOL hexStrToRGBA(NSString *str,
     return CGColorGetAlpha(self.CGColor);
 }
 
+- (UIColor *)inverseColor {
+    CGFloat r = 0.0f, g = 0.0f, b = 0.0f, a = 0.0f;
+    if ([self getRed:&r green:&g blue:&b alpha:&a]) {
+        return [UIColor colorWithRed:1.0-r green:1.0-g blue:1.0-b alpha:a];
+    }
+    return self;
+}
+
 @end

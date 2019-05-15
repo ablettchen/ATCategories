@@ -84,4 +84,8 @@
     return size.height;
 }
 
+- (NSString *)localized {
+    return NSLocalizedString(self, comment: @"");
+}
+
 @end

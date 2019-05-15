@@ -72,6 +72,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGFloat)heightForFont:(UIFont *)font width:(CGFloat)width;
 
+- (NSString *)localized;
+
 @end
 
 NS_ASSUME_NONNULL_END
