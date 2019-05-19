@@ -46,6 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable UIImage *)imageByFlipHorizontal;
 
++ (UIImage *)imageNamed:(NSString *)name inBundle:(nullable NSBundle *)bundle;
+
 @end
 
 static inline CGFloat DegreesToRadians(CGFloat degrees) {

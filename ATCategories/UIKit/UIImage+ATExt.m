@@ -141,4 +141,8 @@
     return [self _at_flipHorizontal:YES vertical:NO];
 }
 
++ (UIImage *)imageNamed:(NSString *)name inBundle:(nullable NSBundle *)bundle {
+    return [UIImage imageNamed:name inBundle:bundle compatibleWithTraitCollection:nil];
+}
+
 @end

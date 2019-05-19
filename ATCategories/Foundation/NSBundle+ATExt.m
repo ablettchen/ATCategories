@@ -79,4 +79,43 @@
     return path;
 }
 
++ (instancetype)at_bundleForClass:(Class)aClass resource:(nullable NSString *)name ofType:(nullable NSString *)ext {
+    NSString *path = [[NSBundle bundleForClass:aClass] pathForResource:name ofType:ext];
+    return [NSBundle bundleWithPath:path];
+}
+
+- (nullable UIImage *)at_imageNamed:(nullable NSString *)name {
+    if (!name || name.length == 0) {return nil;}
+    UIImage *image = \
+    [[UIImage imageWithContentsOfFile:[self pathForResource:[NSString stringWithFormat:@"%@@2x", name] ofType:@"png"]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    return image;
+}
+
+- (NSString *)at_localizedStringForKey:(nullable NSString *)key {
+    return [self at_localizedStringForKey:key language:nil];
+}
+
+- (NSString *)at_localizedStringForKey:(nullable NSString *)key
+                              language:(nullable NSString *)language {
+    return [self at_localizedStringForKey:key value:nil language:language];
+}
+
+- (NSString *)at_localizedStringForKey:(nullable NSString *)key
+                                 value:(nullable NSString *)value
+                              language:(nullable NSString *)language {
+    if (!language) {language = [NSLocale preferredLanguages].firstObject;}
+    if ([language hasPrefix:@"en"]) {
+        language = @"en";
+    }else if ([language hasPrefix:@"zh"]) {
+        if ([language rangeOfString:@"Hans"].location != NSNotFound) {
+            language = @"zh-Hans";
+        }
+    }else {
+        language = @"en";
+    }
+    NSBundle *bundle = [NSBundle bundleWithPath:[self pathForResource:language ofType:@"lproj"]];
+    value = [bundle localizedStringForKey:key value:value table:nil];
+    return [[NSBundle mainBundle] localizedStringForKey:key value:value table:nil];
+}
+
 @end

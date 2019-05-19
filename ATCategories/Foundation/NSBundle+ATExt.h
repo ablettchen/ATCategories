@@ -79,6 +79,19 @@ NS_ASSUME_NONNULL_BEGIN
                                       ofType:(nullable NSString *)ext
                                  inDirectory:(nullable NSString *)subpath;
 
++ (instancetype)at_bundleForClass:(Class)aClass resource:(nullable NSString *)name ofType:(nullable NSString *)ext;
+
+- (nullable UIImage *)at_imageNamed:(nullable NSString *)name;
+
+- (NSString *)at_localizedStringForKey:(nullable NSString *)key;
+
+- (NSString *)at_localizedStringForKey:(nullable NSString *)key
+                              language:(nullable NSString *)language;
+
+- (NSString *)at_localizedStringForKey:(nullable NSString *)key
+                                 value:(nullable NSString *)value
+                              language:(nullable NSString *)language;
+
 @end
 
 NS_ASSUME_NONNULL_END
