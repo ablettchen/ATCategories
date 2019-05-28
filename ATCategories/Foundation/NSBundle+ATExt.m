@@ -87,7 +87,7 @@
 - (nullable UIImage *)at_imageNamed:(nullable NSString *)name {
     if (!name || name.length == 0) {return nil;}
     UIImage *image = \
-    [[UIImage imageWithContentsOfFile:[self pathForResource:[NSString stringWithFormat:@"%@@2x", name] ofType:@"png"]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [[UIImage imageWithContentsOfFile:[self pathForResource:name ofType:nil]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     return image;
 }
 

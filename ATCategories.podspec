@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ATCategories'
-  s.version          = '0.1.11'
-  s.summary          = 'Category 类型工具库'
+  s.version          = '0.1.12'
+  s.summary          = 'Category of Foundation and UIKit'
   s.homepage         = 'https://github.com/ablettchen/ATCategories'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
