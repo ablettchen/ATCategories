@@ -170,6 +170,21 @@ do { \
     #endif
 #endif
 
+static UIViewController *_at_get_top_view_controller() {
+    UIViewController *vc = UIApplication.sharedApplication.keyWindow.rootViewController;
+    while (  [vc isKindOfClass:[UINavigationController class]] ||
+           [vc isKindOfClass:[UITabBarController class]] ||
+           vc.presentedViewController ) {
+        if ( [vc isKindOfClass:[UINavigationController class]] )
+            vc = [(UINavigationController *)vc topViewController];
+        if ( [vc isKindOfClass:[UITabBarController class]] )
+            vc = [(UITabBarController *)vc selectedViewController];
+        if ( vc.presentedViewController )
+            vc = vc.presentedViewController;
+    }
+    return vc;
+}
+
 /**
  Returns a dispatch_time delay from now.
  */
