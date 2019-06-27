@@ -8,10 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ATCategories'
-  s.version          = '0.1.14'
+  s.version          = '0.1.15'
   s.summary          = 'Category of Foundation and UIKit'
   s.homepage         = 'https://github.com/ablettchen/ATCategories'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ablettchen' => 'ablettchen@gmail.com' }
   s.source           = { :git => 'https://github.com/ablettchen/ATCategories.git', :tag => s.version.to_s }
@@ -26,4 +25,5 @@ Pod::Spec.new do |s|
   
   s.libraries = 'z'
   s.frameworks = 'UIKit', 'CoreFoundation' ,'QuartzCore', 'CoreGraphics', 'CoreImage', 'CoreText', 'ImageIO', 'Accelerate'
+  
 end

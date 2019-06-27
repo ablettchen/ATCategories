@@ -36,6 +36,19 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
+#define AT_SAFE_BLOCK(BlockName, ...) ({ !BlockName ? nil : BlockName(__VA_ARGS__); })
+#define AT_SAFE_PERFORM_SELECTOR(Obj, Sel, Arg) ({ \
+    BOOL perform = NO; \
+    if (Obj && Sel) { \
+        if ([Obj respondsToSelector:Sel]) { \
+            [Obj performSelectorOnMainThread:Sel withObject:Arg waitUntilDone:YES]; \
+            perform = YES; \
+            } \
+    } \
+    (perform); \
+})
+
+
 #define adjustsScrollViewInsets_NO(scrollView,vc)\
 do { \
     _Pragma("clang diagnostic push") \
