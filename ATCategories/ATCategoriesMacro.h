@@ -183,7 +183,7 @@ do { \
     #endif
 #endif
 
-static UIViewController *_at_get_top_view_controller() {
+static inline UIViewController *_at_get_top_view_controller() {
     UIViewController *vc = UIApplication.sharedApplication.keyWindow.rootViewController;
     while (  [vc isKindOfClass:[UINavigationController class]] ||
            [vc isKindOfClass:[UITabBarController class]] ||
