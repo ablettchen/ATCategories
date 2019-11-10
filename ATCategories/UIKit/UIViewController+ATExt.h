@@ -12,9 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (ATExt)
 
-- (void)at_setInterfaceOrientationToPreferred;
-- (void)at_setInterfaceOrientationToPortrait;
-- (void)at_changeInterfaceOrientation:(enum UIInterfaceOrientation)interfaceOrientation;
+- (void)at_setInterfaceOrientation:(enum UIInterfaceOrientation)interfaceOrientation;
 
 @end
 
