@@ -62,3 +62,35 @@
 
 @end
 
+@implementation UINavigationController (ATExt)
+
+/**
+ * If the root view of the window is a UINavigationController, you call this Category first, and then UIViewController called.
+ * All you need to do is revisit the following three methods on a page that supports directions other than portrait.
+ */
+
+// Whether automatic screen rotation is supported
+- (BOOL)shouldAutorotate {
+    return [self.topViewController shouldAutorotate];
+}
+
+// Which screen directions are supported
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return [self.topViewController supportedInterfaceOrientations];
+}
+
+// The default screen direction (the current ViewController must be represented by a modal UIViewController (which is not valid with modal navigation) to call this method).
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return [self.topViewController preferredInterfaceOrientationForPresentation];
+}
+
+- (UIViewController *)childViewControllerForStatusBarStyle {
+    return self.topViewController;
+}
+
+- (UIViewController *)childViewControllerForStatusBarHidden {
+    return self.topViewController;
+}
+
+@end
+
