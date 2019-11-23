@@ -29,6 +29,32 @@
 
 @implementation UITabBarController (ATExt)
 
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        SEL selectors[] = {
+            @selector(selectedIndex)
+        };
+
+        for (NSUInteger index = 0; index < sizeof(selectors) / sizeof(SEL); ++index) {
+            SEL originalSelector = selectors[index];
+            SEL swizzledSelector = NSSelectorFromString([@"at_" stringByAppendingString:NSStringFromSelector(originalSelector)]);
+            Method originalMethod = class_getInstanceMethod(self, originalSelector);
+            Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector);
+            if (class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))) {
+                class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+            } else {
+                method_exchangeImplementations(originalMethod, swizzledMethod);
+            }
+        }
+    });
+}
+
+- (NSInteger)at_selectedIndex {
+    NSInteger index = [self at_selectedIndex];
+    if (index > self.viewControllers.count) { return 0; }
+    return index;
+}
 
 - (BOOL)shouldAutorotate {
     UIViewController *vc = self.viewControllers[self.selectedIndex];
