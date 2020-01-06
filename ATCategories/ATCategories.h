@@ -22,6 +22,7 @@
 #import "NSObject+ATExt.h"
 #import "NSObject+ATExtForKVO.h"
 #import "NSBundle+ATExt.h"
+#import "AVPlayer+ATExt.h"
 
 #import "UIView+ATExt.h"
 #import "UITextField+ATExt.h"

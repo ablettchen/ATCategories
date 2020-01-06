@@ -1,13 +1,13 @@
 //
-//  AVPlayer+ATExt_m.m
+//  AVPlayer+ATExt.m
 //  ATCategories
 //
 //  Created by ablett on 2020/1/6.
 //
 
-#import "AVPlayer+ATExt_m.h"
+#import "AVPlayer+ATExt.h"
 
-@implementation AVPlayer (ATExt_m)
+@implementation AVPlayer (ATExt)
 
 - (NSURL *)currentUrl {
     AVAsset *asset = self.currentItem.asset;

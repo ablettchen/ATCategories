@@ -1,5 +1,5 @@
 //
-//  AVPlayer+ATExt_m.h
+//  AVPlayer+ATExt.h
 //  ATCategories
 //
 //  Created by ablett on 2020/1/6.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AVPlayer (ATExt_m)
+@interface AVPlayer (ATExt)
 
 - (NSURL *)currentUrl;
 
