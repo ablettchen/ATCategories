@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ATCategories'
-  s.version          = '0.1.24'
+  s.version          = '0.1.25'
   s.summary          = 'Category of Foundation and UIKit'
   s.homepage         = 'https://github.com/ablettchen/ATCategories'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
