@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AVPlayer (ATExt)
 
-- (NSURL *)currentUrl;
+- (NSURL *)at_currentUrl;
 
 @end
 

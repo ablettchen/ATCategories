@@ -9,7 +9,7 @@
 
 @implementation AVPlayer (ATExt)
 
-- (NSURL *)currentUrl {
+- (NSURL *)at_currentUrl {
     AVAsset *asset = self.currentItem.asset;
     if (![asset isKindOfClass:[AVURLAsset class]]) {return nil;}
     return [(AVURLAsset *)asset URL];
