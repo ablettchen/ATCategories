@@ -14,6 +14,21 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSData (ATExt)
 
 /**
+ Returns a lowercase NSString for md5 hash.
+ */
+- (NSString *)md5String;
+
+/**
+ Returns an NSString for base64 encoded.
+ */
+- (nullable NSString *)base64EncodedString;
+
+/**
+ Returns an NSData for md5 hash.
+ */
+- (NSData *)md5Data;
+
+/**
  Returns an NSDictionary or NSArray for decoded self.
  Returns nil if an error occurs.
  */

@@ -13,6 +13,34 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (ATExt)
 
 /**
+Returns a lowercase NSString for md5 hash.
+*/
+- (nullable NSString *)md5String;
+
+/**
+ Returns an NSString for base64 encoded.
+ */
+- (nullable NSString *)base64EncodedString;
+
+/**
+ URL encode a string in utf-8.
+ @return the encoded string.
+ */
+- (NSString *)stringByURLEncode;
+
+/**
+ URL decode a string in utf-8.
+ @return the decoded string.
+ */
+- (NSString *)stringByURLDecode;
+
+/**
+ Escape commmon HTML to Entity.
+ Example: "a<b" will be escape to "a&lt;b".
+ */
+- (NSString *)stringByEscapingHTML;
+
+/**
  Returns a new UUID NSString
  e.g. "D1178E50-2A4D-4F1F-9BD3-F6AAB00E06B1"
  */
@@ -64,14 +92,32 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)stringByAppendingPathScale:(CGFloat)scale;
 
-- (NSString *)truncateByCharLength:(NSUInteger)charLength;
-
 - (CGSize)sizeForFont:(UIFont *)font size:(CGSize)size mode:(NSLineBreakMode)lineBreakMode;
 
 - (CGFloat)widthForFont:(UIFont *)font;
 
 - (CGFloat)heightForFont:(UIFont *)font width:(CGFloat)width;
 
+/**
+ Returns YES if the target string is contained within the receiver.
+ @param string A string to test the the receiver.
+ 
+ @discussion Apple has implemented this method in iOS8.
+ */
+- (BOOL)containsString:(NSString *)string;
+
+/**
+ Returns an NSData using UTF-8 encoding.
+ */
+- (NSData *)dataValue;
+
+/**
+ Returns an NSDictionary/NSArray which is decoded from receiver.
+ Returns nil if an error occurs.
+ 
+ e.g. NSString: @"{"name":"a","count":2}"  => NSDictionary: @[@"name":@"a",@"count":@2]
+ */
+- (id)jsonValueDecoded;
 
 @end
 
