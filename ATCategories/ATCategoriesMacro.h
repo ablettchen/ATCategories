@@ -35,6 +35,10 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
+#define  StatusBarHeight        (IS_IPHONE_X?(20.f+24.f):20.f)
+#define  NavigationBarHeight    44.f
+#define  TabbarHeight           (IS_IPHONE_X?(49.f+34.f):49.f)
+#define  StatusBarAndNavigationBarHeight   (StatusBarHeight + NavigationBarHeight)
 
 #define AT_SAFE_BLOCK(BlockName, ...) ({ !BlockName ? nil : BlockName(__VA_ARGS__); })
 #define AT_SAFE_PERFORM_SELECTOR(Obj, Sel, Arg) ({ \
