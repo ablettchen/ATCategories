@@ -119,6 +119,9 @@ Returns a lowercase NSString for md5 hash.
  */
 - (id)jsonValueDecoded;
 
+
+- (BOOL)isValidatePhoneNumber;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -195,4 +195,11 @@
     return [[self dataValue] jsonValueDecoded];
 }
 
+- (BOOL)isValidatePhoneNumber {
+    //手机号以13、14、15、17、18 开头，八个 \d 数字字符
+    NSString *phoneRegex = @"^(0|86|17951)?(13[0-9]|14[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9]|19[0-9])[0-9]{8}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [phoneTest evaluateWithObject:self];
+}
+
 @end
