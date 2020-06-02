@@ -26,19 +26,19 @@
 }
 
 + (UIViewController * _Nonnull)at_topViewController {
-    return [self.class topViewControllerWithRootViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController]];
+    return [UIViewController topViewControllerWithRootViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController]];
 }
 
 + (UIViewController * _Nonnull)topViewControllerWithRootViewController:(UIViewController * _Nonnull)rootViewController {
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
         UITabBarController *tabBarController = (UITabBarController *)rootViewController;
-        return [self.class topViewControllerWithRootViewController:tabBarController.selectedViewController];
+        return [UIViewController topViewControllerWithRootViewController:tabBarController.selectedViewController];
     } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController* navigationController = (UINavigationController*)rootViewController;
-        return [self.class topViewControllerWithRootViewController:navigationController.visibleViewController];
+        return [UIViewController topViewControllerWithRootViewController:navigationController.visibleViewController];
     } else if (rootViewController.presentedViewController) {
         UIViewController* presentedViewController = rootViewController.presentedViewController;
-        return [self.class topViewControllerWithRootViewController:presentedViewController];
+        return [UIViewController topViewControllerWithRootViewController:presentedViewController];
     } else {
         return rootViewController;
     }
@@ -138,4 +138,5 @@
 }
 
 @end
+
 
