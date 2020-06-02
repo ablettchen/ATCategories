@@ -26,7 +26,7 @@
 }
 
 + (UIViewController * _Nonnull)at_topViewController {
-    return [self topViewControllerWithRootViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController]];
+    return [self.class topViewControllerWithRootViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController]];
 }
 
 + (UIViewController * _Nonnull)topViewControllerWithRootViewController:(UIViewController * _Nonnull)rootViewController {
