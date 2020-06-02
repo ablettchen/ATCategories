@@ -29,7 +29,7 @@
     return [self topViewControllerWithRootViewController:[[[[UIApplication sharedApplication] delegate] window] rootViewController]];
 }
 
-- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
+- (UIViewController * _Nonnull)topViewControllerWithRootViewController:(UIViewController * _Nonnull)rootViewController {
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
         UITabBarController *tabBarController = (UITabBarController *)rootViewController;
         return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
