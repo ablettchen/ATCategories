@@ -25,20 +25,20 @@
     [invocation invoke];
 }
 
-- (UIViewController * _Nonnull)at_topViewController {
-    return [self topViewControllerWithRootViewController:[[[[UIApplication sharedApplication] delegate] window] rootViewController]];
++ (UIViewController * _Nonnull)at_topViewController {
+    return [self topViewControllerWithRootViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController]];
 }
 
-- (UIViewController * _Nonnull)topViewControllerWithRootViewController:(UIViewController * _Nonnull)rootViewController {
++ (UIViewController * _Nonnull)topViewControllerWithRootViewController:(UIViewController * _Nonnull)rootViewController {
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
         UITabBarController *tabBarController = (UITabBarController *)rootViewController;
-        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+        return [self.class topViewControllerWithRootViewController:tabBarController.selectedViewController];
     } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController* navigationController = (UINavigationController*)rootViewController;
-        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
+        return [self.class topViewControllerWithRootViewController:navigationController.visibleViewController];
     } else if (rootViewController.presentedViewController) {
         UIViewController* presentedViewController = rootViewController.presentedViewController;
-        return [self topViewControllerWithRootViewController:presentedViewController];
+        return [self.class topViewControllerWithRootViewController:presentedViewController];
     } else {
         return rootViewController;
     }
