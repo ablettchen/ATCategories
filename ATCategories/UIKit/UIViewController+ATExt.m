@@ -13,7 +13,7 @@
 - (void)at_setInterfaceOrientation:(enum UIInterfaceOrientation)interfaceOrientation {
     
     if(![[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {return;}
-
+    
     enum UIInterfaceOrientation unknow = UIInterfaceOrientationUnknown;
     SEL selector = NSSelectorFromString(@"setOrientation:");
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
@@ -23,6 +23,25 @@
     [invocation invoke];
     [invocation setArgument:&interfaceOrientation atIndex:2];
     [invocation invoke];
+}
+
+- (UIViewController * _Nonnull)at_topViewController {
+    return [self topViewControllerWithRootViewController:[[[[UIApplication sharedApplication] delegate] window] rootViewController]];
+}
+
+- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
+    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tabBarController = (UITabBarController *)rootViewController;
+        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController* navigationController = (UINavigationController*)rootViewController;
+        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
+    } else if (rootViewController.presentedViewController) {
+        UIViewController* presentedViewController = rootViewController.presentedViewController;
+        return [self topViewControllerWithRootViewController:presentedViewController];
+    } else {
+        return rootViewController;
+    }
 }
 
 @end
@@ -35,7 +54,7 @@
         SEL selectors[] = {
             @selector(selectedIndex)
         };
-
+        
         for (NSUInteger index = 0; index < sizeof(selectors) / sizeof(SEL); ++index) {
             SEL originalSelector = selectors[index];
             SEL swizzledSelector = NSSelectorFromString([@"at_" stringByAppendingString:NSStringFromSelector(originalSelector)]);

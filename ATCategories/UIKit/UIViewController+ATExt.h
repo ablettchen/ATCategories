@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)at_setInterfaceOrientation:(enum UIInterfaceOrientation)interfaceOrientation;
 
+- (UIViewController * _Nonnull)at_topViewController;
+
 @end
 
 NS_ASSUME_NONNULL_END
