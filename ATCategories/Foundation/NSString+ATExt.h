@@ -36,7 +36,7 @@ Returns a lowercase NSString for md5 hash.
 
 /**
  Escape commmon HTML to Entity.
- Example: "a<b" will be escape to "a&lt;b".
+ Example: "a less than b" will be escape to "a&lt;b".
  */
 - (NSString *)stringByEscapingHTML;
 
