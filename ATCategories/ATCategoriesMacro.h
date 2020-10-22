@@ -26,7 +26,7 @@
 #define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 #define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
-#define IS_IPHONE_X (IS_IPHONE && (SCREEN_MAX_LENGTH >= 812.0))
+#define IS_IPHONE_X (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0") && IS_IPHONE && (SCREEN_MIN_LENGTH >= 375 && SCREEN_MAX_LENGTH >= 812.0))
 
 #define XCODE_VERSION_GREATER_THAN_OR_EQUAL_TO_8    __has_include(<UserNotifications/UserNotifications.h>)
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
