@@ -61,6 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)scrollToRightAnimated:(BOOL)animated;
 
+
+- (void)adjustmentScrollInsetNO;
+
 @end
 
 NS_ASSUME_NONNULL_END

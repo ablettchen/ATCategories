@@ -33,7 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)reloadSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation;
 
 - (void)clearSelectedRowsAnimated:(BOOL)animated;
-- (void)adjustmentScrollInsetNO;
 
 @end
 
