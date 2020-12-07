@@ -52,19 +52,6 @@
     (perform); \
 })
 
-
-#define adjustsScrollViewInsets_NO(scrollView,vc)\
-do { \
-    _Pragma("clang diagnostic push") \
-    _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
-    if ([UIScrollView instancesRespondToSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:")]) {\
-        [scrollView performSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:") withObject:@(2)];\
-} else {\
-    vc.automaticallyAdjustsScrollViewInsets = NO;\
-}\
-    _Pragma("clang diagnostic pop") \
-} while (0)
-
 /**
  Add this macro before each category implementation, so we don't have to use
  -all_load or -force_load to load object files from static libraries that only

@@ -70,4 +70,14 @@
         [self deselectRowAtIndexPath:path animated:animated];
     }];
 }
+
+- (void)adjustmentScrollInsetNO {
+    if (@available(iOS 11.0, *)) {\
+        self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;\
+    }
+    if (@available(iOS 13.0, *)) {\
+        self.automaticallyAdjustsScrollIndicatorInsets = NO;\
+    }
+}
+
 @end
