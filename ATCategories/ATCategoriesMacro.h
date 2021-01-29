@@ -37,7 +37,7 @@
 
 #define  StatusBarHeight        (IS_IPHONE_X?(20.f+24.f):20.f)
 #define  NavigationBarHeight    44.f
-#define  TabbarHeight           (IS_IPHONE_X?(49.f+34.f):49.f)
+#define  TabbarHeight           (IS_IPHONE_X?(52.f+34.f):52.f)
 #define  StatusBarAndNavigationBarHeight   (StatusBarHeight + NavigationBarHeight)
 
 #define AT_SAFE_BLOCK(BlockName, ...) ({ !BlockName ? nil : BlockName(__VA_ARGS__); })
