@@ -227,7 +227,7 @@
                               @"iPhone13,1" : @"iPhone 12 mini",
                               @"iPhone13,2" : @"iPhone 12",
                               @"iPhone13,3" : @"iPhone 12 Pro",
-                              @"iPhone13,3" : @"iPhone 12 Pro Max",
+                              @"iPhone13,4" : @"iPhone 12 Pro Max",
                               
                               
                               @"iPad1,1" : @"iPad 1",
