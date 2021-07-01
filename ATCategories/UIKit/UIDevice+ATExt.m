@@ -146,7 +146,7 @@
     return model;
 }
 
-- (NSString *)machineModelName {
+- (NSString *)at_machineModelName {
     static dispatch_once_t one;
     static NSString *name;
     dispatch_once(&one, ^{
@@ -171,6 +171,14 @@
                               @"Watch5,2" : @"Apple Watch Series 5 44mm case (GPS)",
                               @"Watch5,3" : @"Apple Watch Series 5 40mm case (GPS+Cellular)",
                               @"Watch5,4" : @"Apple Watch Series 5 44mm case (GPS+Cellular)",
+                              @"Watch5,9" : @"Apple Watch SE",
+                              @"Watch5,10" : @"Apple Watch SE",
+                              @"Watch5,11" : @"Apple Watch SE",
+                              @"Watch5,12" : @"Apple Watch SE",
+                              @"Watch6,1" : @"Apple Watch Series 6",
+                              @"Watch6,2" : @"Apple Watch Series 6",
+                              @"Watch6,3" : @"Apple Watch Series 6",
+                              @"Watch6,4" : @"Apple Watch Series 6",
                               
                               @"iPod1,1" : @"iPod touch 1",
                               @"iPod2,1" : @"iPod touch 2",
@@ -216,6 +224,10 @@
                               @"iPhone12,3" : @"iPhone 11 Pro",
                               @"iPhone12,5" : @"iPhone 11 Pro Max",
                               @"iPhone12,8" : @"iPhone SE 2nd Gen",
+                              @"iPhone13,1" : @"iPhone 12 mini",
+                              @"iPhone13,2" : @"iPhone 12",
+                              @"iPhone13,3" : @"iPhone 12 Pro",
+                              @"iPhone13,3" : @"iPhone 12 Pro Max",
                               
                               
                               @"iPad1,1" : @"iPad 1",
@@ -253,7 +265,6 @@
                               @"iPad7,2" : @"iPad Pro (12.9 inch)",
                               @"iPad7,3" : @"iPad Pro (10.5 inch)",
                               @"iPad7,4" : @"iPad Pro (10.5 inch)",
-                              
                               @"iPad7,5"  : @"iPad 6th Gen (WiFi)",
                               @"iPad7,6"  : @"iPad 6th Gen (WiFi+Cellular)",
                               @"iPad7,11" : @"iPad 7th Gen 10.2-inch (WiFi)",
@@ -274,6 +285,19 @@
                               @"iPad11,2"  : @"iPad mini 5th Gen",
                               @"iPad11,3"  : @"iPad Air 3rd Gen (WiFi)",
                               @"iPad11,4"  : @"iPad Air 3rd Gen",
+                              @"iPad11,6"  : @"iPad (8th generation)",
+                              @"iPad11,7"  : @"iPad (8th generation)",
+                              @"iPad13,1"  : @"iPad Air (4th generation)",
+                              @"iPad13,2"  : @"iPad Air (4th generation)",
+                              @"iPad13,3"  : @"iPad Pro (3rd generation)",
+                              @"iPad13,4"  : @"iPad Pro (3rd generation)",
+                              @"iPad13,5"  : @"iPad Pro (3rd generation)",
+                              @"iPad13,6"  : @"iPad Pro (3rd generation)",
+                              @"iPad13,7"  : @"iPad Pro (3rd generation)",
+                              @"iPad13,8"  : @"iPad Pro (12.9-inch) (5th generation)",
+                              @"iPad13,9"  : @"iPad Pro (12.9-inch) (5th generation)",
+                              @"iPad13,10"  : @"iPad Pro (12.9-inch) (5th generation)",
+                              @"iPad13,11"  : @"iPad Pro (12.9-inch) (5th generation)",
                               
                               
                               @"AppleTV2,1" : @"Apple TV 2",
@@ -281,6 +305,7 @@
                               @"AppleTV3,2" : @"Apple TV 3",
                               @"AppleTV5,3" : @"Apple TV 4",
                               @"AppleTV6,2" : @"Apple TV 4K",
+                              @"AppleTV11,1" : @"Apple TV 4K (2nd generation)",
                               
                               @"i386" : @"Simulator x86",
                               @"x86_64" : @"Simulator x64",

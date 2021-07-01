@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The device's machine model name. e.g. "iPhone 5s" "iPad mini 2"
 /// @see http://theiphonewiki.com/wiki/Models
-@property (nullable, nonatomic, readonly) NSString *machineModelName;
+@property (nullable, nonatomic, readonly) NSString *at_machineModelName;
 
 /// The System's startup time.
 @property (nonatomic, readonly) NSDate *systemUptime;
