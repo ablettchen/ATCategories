@@ -8,16 +8,15 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ATCategories'
-  s.version          = '0.1.41'
+  s.version          = '0.1.42'
   s.summary          = 'Category of Foundation and UIKit'
   s.homepage         = 'https://github.com/ablettchen/ATCategories'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ablettchen' => 'ablettchen@gmail.com' }
   s.source           = { :git => 'https://github.com/ablettchen/ATCategories.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://weibo.com/ablettx'
   
-  s.platform                = :ios, '9.0'
-  s.ios.deployment_target   = '9.0'
+  s.platform                = :ios, '10.0'
+  s.ios.deployment_target   = '10.0'
   s.requires_arc            = true
   
   s.source_files = 'ATCategories/**/*.{h,m}'
